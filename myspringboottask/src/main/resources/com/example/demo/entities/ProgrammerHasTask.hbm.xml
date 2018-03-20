@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 18, 2018 9:17:04 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.example.demo.entities.ProgrammerHasTask" table="programmer_has_task" schema="test" optimistic-lock="version">
+        <id name="nmid" type="int">
+            <column name="nmid" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="person" class="com.example.demo.entities.Person" fetch="select">
+            <column name="person_id" />
+        </many-to-one>
+        <many-to-one name="task" class="com.example.demo.entities.Task" fetch="select">
+            <column name="task_id" />
+        </many-to-one>
+        <property name="fromDate" type="timestamp">
+            <column name="from_date" length="29" />
+        </property>
+        <property name="toDate" type="timestamp">
+            <column name="to_date" length="29" />
+        </property>
+    </class>
+</hibernate-mapping>
