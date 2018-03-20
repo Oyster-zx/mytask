@@ -22,7 +22,7 @@ import javax.persistence.TemporalType;
 @Table(name = "person",
          schema = "test"
 )
-public class Person implements java.io.Serializable {
+public class Person implements java.io.Serializable { //annotations?
 
     private int personId;
     private String name;

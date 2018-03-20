@@ -15,7 +15,7 @@ import javax.persistence.Table;
 @Table(name = "task",
          schema = "test"
 )
-public class Task implements java.io.Serializable {
+public class Task implements java.io.Serializable { //annotations?
 
     private int taskId;
     private String message;

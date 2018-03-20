@@ -18,7 +18,7 @@ import javax.persistence.Table;
 @Table(name="commit"
     ,schema="test"
 )
-public class Commit  implements java.io.Serializable {
+public class Commit  implements java.io.Serializable { //annotations?
 
 
      private int commitId;

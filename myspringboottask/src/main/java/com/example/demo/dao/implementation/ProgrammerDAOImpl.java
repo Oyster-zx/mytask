@@ -21,7 +21,7 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Repository
 @Transactional
-public class ProgrammerDAOImpl implements ProgrammerDAO{
+public class ProgrammerDAOImpl implements ProgrammerDAO{ // how to work with data from the database via hibernate?
     @Autowired
     SessionFactory sessionFactory;
 

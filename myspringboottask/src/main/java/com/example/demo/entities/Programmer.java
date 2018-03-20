@@ -19,7 +19,7 @@ import org.hibernate.annotations.Parameter;
 @Table(name = "programmer",
          schema = "test"
 )
-public class Programmer implements java.io.Serializable {
+public class Programmer implements java.io.Serializable { //annotations?
 
     private int personId;
     private Person person;
