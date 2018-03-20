@@ -5,15 +5,16 @@
  */
 package com.example.demo.dao.implementation;
 
-import com.example.demo.dao.ProgrammerDAO;
-import com.example.demo.entities.Programmer;
 import java.util.List;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Restrictions;
-import org.springframework.beans.factory.annotation.Autowired;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.example.demo.dao.ProgrammerDAO;
+import com.example.demo.entities.Programmer;
 
 /**
  *
@@ -22,8 +23,9 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository
 @Transactional
 public class ProgrammerDAOImpl implements ProgrammerDAO{ // how to work with data from the database via hibernate?
-    @Autowired
-    SessionFactory sessionFactory;
+
+    @PersistenceContext
+    private EntityManager entityManager;
 
     @Override
     public Programmer getProgrammer(int id) {
