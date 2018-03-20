@@ -1,0 +1,179 @@
+--
+-- Name: test; Type: SCHEMA; Schema: -; Owner: postgres
+--
+
+CREATE SCHEMA test;
+
+
+ALTER SCHEMA test OWNER TO postgres;
+
+--
+-- Name: commit; Type: TABLE; Schema: test; Owner: postgres
+--
+
+CREATE TABLE test.commit (
+    commit_id integer NOT NULL,
+    message text
+);
+
+
+ALTER TABLE test.commit OWNER TO postgres;
+
+--
+-- Name: person; Type: TABLE; Schema: test; Owner: postgres
+--
+
+CREATE TABLE test.person (
+    person_id integer NOT NULL,
+    name text,
+    surname text,
+    date_of_birth date
+);
+
+
+ALTER TABLE test.person OWNER TO postgres;
+
+--
+-- Name: programmer; Type: TABLE; Schema: test; Owner: postgres
+--
+
+CREATE TABLE test.programmer (
+    person_id integer NOT NULL
+);
+
+
+ALTER TABLE test.programmer OWNER TO postgres;
+
+--
+-- Name: programmer_has_commit; Type: TABLE; Schema: test; Owner: postgres
+--
+
+CREATE TABLE test.programmer_has_commit (
+    nmid integer NOT NULL,
+    person_id integer,
+    commit_id integer,
+    date timestamp without time zone
+);
+
+
+ALTER TABLE test.programmer_has_commit OWNER TO postgres;
+
+--
+-- Name: programmer_has_task; Type: TABLE; Schema: test; Owner: postgres
+--
+
+CREATE TABLE test.programmer_has_task (
+    nmid integer NOT NULL,
+    person_id integer,
+    task_id integer,
+    from_date timestamp without time zone,
+    to_date timestamp without time zone
+);
+
+
+ALTER TABLE test.programmer_has_task OWNER TO postgres;
+
+--
+-- Name: task; Type: TABLE; Schema: test; Owner: postgres
+--
+
+CREATE TABLE test.task (
+    task_id integer NOT NULL,
+    message text
+);
+
+
+ALTER TABLE test.task OWNER TO postgres;
+
+--
+-- Name: commit_pkey; Type: CONSTRAINT; Schema: test; Owner: postgres
+--
+
+ALTER TABLE ONLY test.commit
+    ADD CONSTRAINT commit_pkey PRIMARY KEY (commit_id);
+
+
+--
+-- Name: person_pkey; Type: CONSTRAINT; Schema: test; Owner: postgres
+--
+
+ALTER TABLE ONLY test.person
+    ADD CONSTRAINT person_pkey PRIMARY KEY (person_id);
+
+
+--
+-- Name: programmer_has_commit_pkey; Type: CONSTRAINT; Schema: test; Owner: postgres
+--
+
+ALTER TABLE ONLY test.programmer_has_commit
+    ADD CONSTRAINT programmer_has_commit_pkey PRIMARY KEY (nmid);
+
+
+--
+-- Name: programmer_has_task_pkey; Type: CONSTRAINT; Schema: test; Owner: postgres
+--
+
+ALTER TABLE ONLY test.programmer_has_task
+    ADD CONSTRAINT programmer_has_task_pkey PRIMARY KEY (nmid);
+
+
+--
+-- Name: programmer_pkey; Type: CONSTRAINT; Schema: test; Owner: postgres
+--
+
+ALTER TABLE ONLY test.programmer
+    ADD CONSTRAINT programmer_pkey PRIMARY KEY (person_id);
+
+
+--
+-- Name: task_pkey; Type: CONSTRAINT; Schema: test; Owner: postgres
+--
+
+ALTER TABLE ONLY test.task
+    ADD CONSTRAINT task_pkey PRIMARY KEY (task_id);
+
+
+--
+-- Name: programmer_has_commit_commit_id_fkey; Type: FK CONSTRAINT; Schema: test; Owner: postgres
+--
+
+ALTER TABLE ONLY test.programmer_has_commit
+    ADD CONSTRAINT programmer_has_commit_commit_id_fkey FOREIGN KEY (commit_id) REFERENCES test.commit(commit_id);
+
+
+--
+-- Name: programmer_has_commit_person_id_fkey; Type: FK CONSTRAINT; Schema: test; Owner: postgres
+--
+
+ALTER TABLE ONLY test.programmer_has_commit
+    ADD CONSTRAINT programmer_has_commit_person_id_fkey FOREIGN KEY (person_id) REFERENCES test.person(person_id);
+
+
+--
+-- Name: programmer_has_task_person_id_fkey; Type: FK CONSTRAINT; Schema: test; Owner: postgres
+--
+
+ALTER TABLE ONLY test.programmer_has_task
+    ADD CONSTRAINT programmer_has_task_person_id_fkey FOREIGN KEY (person_id) REFERENCES test.person(person_id);
+
+
+--
+-- Name: programmer_has_task_task_id_fkey; Type: FK CONSTRAINT; Schema: test; Owner: postgres
+--
+
+ALTER TABLE ONLY test.programmer_has_task
+    ADD CONSTRAINT programmer_has_task_task_id_fkey FOREIGN KEY (task_id) REFERENCES test.task(task_id);
+
+
+--
+-- Name: programmer_person_id_fkey; Type: FK CONSTRAINT; Schema: test; Owner: postgres
+--
+
+ALTER TABLE ONLY test.programmer
+    ADD CONSTRAINT programmer_person_id_fkey FOREIGN KEY (person_id) REFERENCES test.person(person_id);
+
+
+--
+-- PostgreSQL database dump complete
+--
+
