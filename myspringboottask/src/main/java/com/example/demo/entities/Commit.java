@@ -1,15 +1,12 @@
 package com.example.demo.entities;
 // Generated Mar 18, 2018 9:17:03 PM by Hibernate Tools 4.3.1
 
-import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**

@@ -24,7 +24,7 @@ public class Programmer implements Serializable{
     private Person person;
 
     public Programmer() {
-
+        person = new Person();
     }
 
     @Id
